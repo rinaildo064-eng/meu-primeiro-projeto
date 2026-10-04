@@ -25,6 +25,34 @@
             
                 </div>
              </div>   
-        </body>
+       
     
+
+<!-- 1. Importa a biblioteca do Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  // 2. Coloque as credenciais obtidas
+  const SUPABASE_URL = 'https://jtdjmjyhxeiwhbffohzw.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_be1874GuTTgAkF3OH2oAtw_lXmDwte5'; // cole aqui a chave do print
+
+  // 3. Conecta ao Supabase
+  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // 4. Teste de busca na tabela "usuarios_rs"
+  async function testarConexao() {
+    const { data, error } = await _supabase
+      .from('usuarios_rs')
+      .select('*');
+
+    if (error) {
+      console.error('Erro na conexão:', error);
+    } else {
+      console.log('Usuários encontrados:', data);
+    }
+  }
+
+  testarConexao();
+</script>
+ </body>
 </html>
